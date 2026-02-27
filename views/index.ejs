@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>All Quora Post</title>
+      <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+      <h1>Quora Posts</h1>
+      <.%for(let post of posts){%>
+            <div class="post">
+                  <h3 class="id"><.%=post.id%></h3>
+                  <h3 class="user">@<.%=post.username%></h3>
+                  <h3 class="content"> <.%=post.content%> </h3>
+                  <a href="/posts/<.%=post.id%>">Edit This Post</a>
+            </div>
+       <.%}%>
+
+       <br>
+       <a href="/posts/new">Create A New Post</a>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Quora Posts</title>
+      <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+      <h1>Quora Post</h1>
+       <a href="/posts/new">Create New Post</a><br><br>
+
+      <form action="/posts/undo" method="POST">
+            <button>Undo Delete</button>
+      </form>
+
+      <hr>
+      <%for(let post of posts){%>
+            <div class="post">
+                  <h3 class="user">@<%=post.username%></h3>
+                  <h3 class="content"><%=post.content%></h3>
+
+                  <a href="/posts/<%=post.id%>">See In Details</a><br><br>
+
+                  <a href="/posts/<%=post.id%>/edit">Edit the post</a><br><br>
+
+                  <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+                         <button type="submit">Delete Post</button>
+                  </form>     
+            </div>      
+      <%}%>
+</body>
+
+</html>
